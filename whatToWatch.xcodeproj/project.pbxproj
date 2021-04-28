@@ -34,6 +34,7 @@
 		62C7779326384209008B2EE0 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7779226384209008B2EE0 /* Review.swift */; };
 		62C77796263842DE008B2EE0 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C77795263842DE008B2EE0 /* UserProfile.swift */; };
 		62C7779A263847C1008B2EE0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C77799263847C1008B2EE0 /* WelcomeViewController.swift */; };
+		62D3A23F263991B1008346C7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D3A23E263991B1008346C7 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		62C7779226384209008B2EE0 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		62C77795263842DE008B2EE0 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		62C77799263847C1008B2EE0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		62D3A23E263991B1008346C7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				62C7773826381D9F008B2EE0 /* Assets.xcassets */,
 				62C7772F26381D9E008B2EE0 /* AppDelegate.swift */,
 				62C7773126381D9E008B2EE0 /* SceneDelegate.swift */,
+				62D3A23E263991B1008346C7 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 		62C7776026382F39008B2EE0 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				62C77799263847C1008B2EE0 /* WelcomeViewController.swift */,
 				62C7776126382F4C008B2EE0 /* AuthViewController.swift */,
 				62C7776526382F63008B2EE0 /* SettingsViewController.swift */,
 				62C7776826382F8B008B2EE0 /* DashboardDetailsViewController.swift */,
@@ -189,7 +193,6 @@
 				62C7777426382FF3008B2EE0 /* ReviewsViewController.swift */,
 				62C7777726383011008B2EE0 /* WatchlistViewController.swift */,
 				62C7777A2638301D008B2EE0 /* FavoritesViewController.swift */,
-				62C77799263847C1008B2EE0 /* WelcomeViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				62C7773226381D9E008B2EE0 /* SceneDelegate.swift in Sources */,
 				62C7777226382FC4008B2EE0 /* ActorDetailsViewController.swift in Sources */,
 				62C77790263841E8008B2EE0 /* ActorDetails.swift in Sources */,
+				62D3A23F263991B1008346C7 /* Extensions.swift in Sources */,
 				62C77796263842DE008B2EE0 /* UserProfile.swift in Sources */,
 				62C7778126383077008B2EE0 /* APICaller.swift in Sources */,
 				62C7777B2638301D008B2EE0 /* FavoritesViewController.swift in Sources */,
