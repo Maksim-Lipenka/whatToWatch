@@ -10,31 +10,13 @@ import Foundation
 final class AuthManager {
     static let shared = AuthManager()
     
-    struct Constants {
-        static let apiKey = "726bb0eeee512069630aba2c9a0100a9"
-//        static let apiToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MjZiYjBlZWVlNTEyMDY5NjMwYWJhMmM5YTAxMDBhOSIsInN1YiI6IjYwODdkOGVhYjZhYmM0MDAyOThiMDJkNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.82Tb-X8y17xATZJwZOZImfl8ZiMBM9HXo83f2umONjY"
-    }
+    private init() {}
     
-    struct RequestTokenResponseObject: Decodable {
-        let success: Bool
-        let failure: Bool?
-        let status_code: Int?
-        let status_message: String?
-        let expires_at: String?
-        let request_token: String?
-    }
-    
-    struct CreateSessionResponseObject: Decodable {
-        let success: Bool
-        let failure: Bool?
-        let status_code: Int?
-        let status_message: String?
-        let session_id: String?
-    }
+    // MARK: - URL STRINGS
     
     public var requestTokenURL: URL? {
         let base = "https://api.themoviedb.org/3/authentication/token/new"
-        let string = "\(base)?api_key=\(AuthManager.Constants.apiKey)"
+        let string = "\(base)?api_key=\(APICaller.Constants.apiKey)"
         return URL(string: string)
     }
     
@@ -48,31 +30,29 @@ final class AuthManager {
     
     public var createSessionURL: URL? {
         let base = "https://api.themoviedb.org/3/authentication/session/new"
-        let string = "\(base)?api_key=\(AuthManager.Constants.apiKey)"
+        let string = "\(base)?api_key=\(APICaller.Constants.apiKey)"
     
         return URL(string: string)
         // body: request_token
     }
     
-    private init() {
-        
-    }
-    
     var isSignedIn: Bool {
-        return false
+        return sessionId != nil
     }
     
     private var requestToken: String?
     
-    private var sessionId: String?
-    
-    private var tokenExpirationDate: Date? {
-        return nil
+    public var sessionId: String? {
+        return UserDefaults.standard.string(forKey: "session_id")
     }
     
-    private var shouldRefreshToken: Bool {
-        return false
-    }
+//    private var tokenExpirationDate: Date? {
+//        return nil
+//    }
+//
+//    private var shouldRefreshToken: Bool {
+//        return false
+//    }
     
     public func createRequestToken(completion: @escaping (() -> Void)) {
         guard let url = requestTokenURL else {
@@ -94,7 +74,7 @@ final class AuthManager {
         task.resume()
     }
     
-    public func requestCreateSession() {
+    public func requestCreateSession(completion: @escaping ((Bool) -> Void)) {
         guard let url = createSessionURL else {
             return
         }
@@ -111,17 +91,25 @@ final class AuthManager {
         request.httpBody = jsonData
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
-            guard let data = data else { return }
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, _, error) in
+            guard let data = data, error == nil else {
+                completion(false)
+                return
+            }
             
             do {
                 let result = try JSONDecoder().decode(CreateSessionResponseObject.self, from: data)
-                self.sessionId = result.session_id
+                self?.cacheSession(result)
+                completion(true)
             } catch {
                 print(error)
             }
         }
         
         task.resume()
+    }
+    
+    private func cacheSession(_ response: CreateSessionResponseObject) {
+        UserDefaults.standard.setValue(response.session_id, forKey: "session_id")
     }
 }

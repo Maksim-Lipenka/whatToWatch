@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62A89BD9263A15C40051EADA /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A89BD8263A15C40051EADA /* AuthResponse.swift */; };
 		62C7773026381D9E008B2EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7772F26381D9E008B2EE0 /* AppDelegate.swift */; };
 		62C7773226381D9E008B2EE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7773126381D9E008B2EE0 /* SceneDelegate.swift */; };
 		62C7773426381D9E008B2EE0 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7773326381D9E008B2EE0 /* DashboardViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		62A89BD8263A15C40051EADA /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		62C7772C26381D9E008B2EE0 /* whatToWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whatToWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C7772F26381D9E008B2EE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62C7773126381D9E008B2EE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				62C7778F263841E8008B2EE0 /* ActorDetails.swift */,
 				62C7779226384209008B2EE0 /* Review.swift */,
 				62C77795263842DE008B2EE0 /* UserProfile.swift */,
+				62A89BD8263A15C40051EADA /* AuthResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				62C7773426381D9E008B2EE0 /* DashboardViewController.swift in Sources */,
 				62C7776F26382FB1008B2EE0 /* MovieDetailsViewController.swift in Sources */,
 				62C7776926382F8B008B2EE0 /* DashboardDetailsViewController.swift in Sources */,
+				62A89BD9263A15C40051EADA /* AuthResponse.swift in Sources */,
 				62C7776C26382FA0008B2EE0 /* SearchParametersViewController.swift in Sources */,
 				62C7777526382FF3008B2EE0 /* ReviewsViewController.swift in Sources */,
 				62C7777E2638306C008B2EE0 /* AuthManager.swift in Sources */,

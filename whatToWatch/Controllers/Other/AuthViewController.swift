@@ -53,8 +53,13 @@ class AuthViewController: UIViewController, WKNavigationDelegate {
         }
 
         // Create session id
-        if url.pathComponents.contains(where: {$0 == "allow"}) {
-            AuthManager.shared.requestCreateSession()
+        if url.pathComponents.last == "allow" {
+            AuthManager.shared.requestCreateSession() { [weak self] success in
+                DispatchQueue.main.async {
+                    self?.navigationController?.popToRootViewController(animated: true)
+                    self?.completionHandler?(success)
+                }
+            }
         }
     }
 }
