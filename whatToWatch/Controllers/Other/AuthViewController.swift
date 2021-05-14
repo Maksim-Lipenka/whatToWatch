@@ -56,7 +56,7 @@ class AuthViewController: UIViewController, WKNavigationDelegate {
         if url.pathComponents.last == "allow" {
             AuthManager.shared.requestCreateSession() { [weak self] success in
                 DispatchQueue.main.async {
-                    self?.navigationController?.popToRootViewController(animated: true)
+                    self?.dismiss(animated: true, completion: nil)
                     self?.completionHandler?(success)
                 }
             }

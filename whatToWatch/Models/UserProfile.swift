@@ -19,9 +19,13 @@ struct UserProfile: Decodable {
 
 struct UserAvatar: Decodable {
     let gravatar: UserGravatar
+    let tmdb: AvatarPathObject
 }
 
 struct UserGravatar: Decodable {
     let hash: String
-    let tmdb: [String: String?]
+}
+
+struct AvatarPathObject: Decodable {
+    let avatar_path: String?
 }

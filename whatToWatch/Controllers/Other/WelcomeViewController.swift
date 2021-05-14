@@ -8,11 +8,19 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-
+    
     private let signInButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
         button.setTitle("Sign in with TMDb", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        return button
+    }()
+    
+    private let skipButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .white
+        button.setTitle("Later", for: .normal)
         button.setTitleColor(.blue, for: .normal)
         return button
     }()
@@ -22,7 +30,9 @@ class WelcomeViewController: UIViewController {
         title = "whatToWatch?"
         view.backgroundColor = .systemGreen
         view.addSubview(signInButton)
+        view.addSubview(skipButton)
         signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
+        skipButton.addTarget(self, action: #selector(didTapSkip), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -33,6 +43,16 @@ class WelcomeViewController: UIViewController {
             width: view.width-40,
             height: 50
         )
+        skipButton.frame = CGRect(
+            x: 20,
+            y: view.height-110-view.safeAreaInsets.bottom,
+            width: view.width-40,
+            height: 50
+        )
+    }
+    
+    @objc func didTapSkip() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func didTapSignIn() {
@@ -43,12 +63,13 @@ class WelcomeViewController: UIViewController {
             }
         }
         vc.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true, completion: nil)
     }
     
     private func handleSignIn(success: Bool) {
         // Log user in or yell at them for error
         guard success else {
+            print("dfdfd")
             let alert = UIAlertController(
                 title: "Oops",
                 message: "Something went wrong when signing in.",
@@ -58,9 +79,7 @@ class WelcomeViewController: UIViewController {
             present(alert, animated: true)
             return
         }
-        
-        let mainAppTabBarVC = TabBarViewController();
-        mainAppTabBarVC.modalPresentationStyle = .fullScreen
-        present(mainAppTabBarVC, animated: true)
+        print("here")
+        self.dismiss(animated: true, completion: nil)
     }
 }

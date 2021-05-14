@@ -1,17 +1,17 @@
 //
-//  FavoritesViewController.swift
+//  OverviewViewController.swift
 //  whatToWatch
 //
-//  Created by Maksim Lipenko on 27.04.21.
+//  Created by Maksim Lipenko on 29.04.21.
 //
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class OverviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Favorites"
+        title = "Overview"
         view.backgroundColor = .systemBackground
     }
 }
